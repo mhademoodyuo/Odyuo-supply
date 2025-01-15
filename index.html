@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odyuo Supply</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Store Header -->
+    <header class="text-center py-4">
+        <img src="images/logo.jpg" alt="Store Logo" class="store-logo mb-3">
+        <h1 class="store-name mb-3">Odyuo Supply</h1>
+        <button class="btn btn-dark" id="menuButton">Menu</button>
+    </header>
+
+    <!-- Popup Menu -->
+    <div id="menuPopup" class="d-none position-fixed top-0 end-0 bg-white shadow p-3" style="z-index: 1050; width: 250px;">
+        <button class="btn-close" id="closeMenu"></button>
+        <ul class="list-unstyled mt-3">
+            <li><a href="privacy-policy.html" class="btn btn-secondary w-100 mb-2">Privacy Policy</a></li>
+            <li><a href="https://wa.me/qr/UQ2M5WIGOOPUK1" class="btn btn-success w-100 mb-2">Support</a></li>
+        </ul>
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Welcome to Odyuo Supply</h1>
+        <p class="text-center">Your trusted store for women’s health and hygiene products.</p>
+
+        <div class="row mt-4">
+            <!-- Product 1 -->
+            <div class="col-md-6">
+                <div class="product border p-3">
+                    <img src="syrup.jpeg" class="img-fluid" alt="Udaan Nari Mantra">
+                    <h3>Udaan Nari Mantra</h3>
+                    <p>Price: ₹200</p>
+                    <label for="quantity1">Quantity:</label>
+                    <input type="number" id="quantity1" class="form-control mb-2" value="1" min="1" onchange="updateTotal(1, 200)">
+                    <p>Total: ₹<span id="total1">200</span></p>
+                    <button class="btn btn-primary" onclick="showPaymentOptions(1, 200, 'Udaan Nari Mantra')">Buy Now</button>
+                    <div id="paymentOptions1" class="d-none position-absolute bg-white p-3 shadow border rounded">
+                        <button class="btn btn-success mb-2" onclick="offlinePayment(1, 200, 'Udaan Nari Mantra')">Offline Payment</button>
+                        <button class="btn btn-primary" onclick="onlinePayment(1, 200, 'Udaan Nari Mantra')">Online Payment</button>
+                        <button class="btn btn-warning" onclick="selfPickup(1, 200, 'Udaan Nari Mantra')">Self Pickup</button>
+                        
+
+
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="col-md-6">
+                <div class="product border p-3">
+                    <img src="pads.jpeg" class="img-fluid" alt="Meri Udaan - Ultra Thin Sanitary Pad">
+                    <h3>Meri Udaan - Ultra Thin Sanitary Pad</h3>
+                    <p>Price: ₹80</p>
+                    <label for="quantity2">Quantity:</label>
+                    <input type="number" id="quantity2" class="form-control mb-2" value="1" min="1" onchange="updateTotal(2, 80)">
+                    <p>Total: ₹<span id="total2">80</span></p>
+                    <button class="btn btn-primary" onclick="showPaymentOptions(2, 80, 'Meri Udaan - Ultra Thin Sanitary Pad')">Buy Now</button>
+                    <div id="paymentOptions2" class="d-none position-absolute bg-white p-3 shadow border rounded">
+                        <button class="btn btn-success mb-2" onclick="offlinePayment(2, 80, 'Meri Udaan - Ultra Thin Sanitary Pad')">Offline Payment</button>
+                        <button class="btn btn-primary" onclick="onlinePayment(2, 80, 'Meri Udaan - Ultra Thin Sanitary Pad')">Online Payment</button>
+                        <button class="btn btn-warning" onclick="selfPickup(2, 80, 'Meri Udaan - Ultra Thin Sanitary Pad')">Self Pickup</button>
+                    </div>
+                     </div>
+            </div>
+    </div>
+
+    <script>
+        // Toggle menu popup
+        const menuButton = document.getElementById('menuButton');
+        const menuPopup = document.getElementById('menuPopup');
+        const closeMenu = document.getElementById('closeMenu');
+
+        menuButton.addEventListener('click', () => {
+            menuPopup.classList.toggle('d-none');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            menuPopup.classList.add('d-none');
+        });
+
+        // Update total price
+        function updateTotal(productId, pricePerUnit) {
+            const quantity = document.getElementById(`quantity${productId}`).value;
+            const total = pricePerUnit * quantity;
+            document.getElementById(`total${productId}`).innerText = total;
+        }
+
+        // Show payment options
+        function showPaymentOptions(productId, pricePerUnit, productName) {
+            const optionsDiv = document.getElementById(`paymentOptions${productId}`);
+            optionsDiv.classList.toggle('d-none');
+        }
+
+        function offlinePayment(productId, pricePerUnit, productName) {
+    const quantity = document.getElementById(`quantity${productId}`).value;
+    const totalPrice = pricePerUnit * quantity;
+
+    // Pre-fill WhatsApp message
+    const message = `Hi, I'd like to place an offline order for:\n\nProduct: ${productName}\nQuantity: ${quantity}\nTotal Price: ₹${totalPrice}\nGmail: \nAddress: \nLandmark: \nCalling Number: `;
+    const whatsappURL = `https://wa.me/9089042003?text=${encodeURIComponent(message)}`;
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+}
+        function onlinePayment(productId, pricePerUnit, productName) {
+    const quantity = document.getElementById(`quantity${productId}`).value;
+
+    // Redirect to scanner.html with query parameters
+    window.location.href = `scanner.html?product=${encodeURIComponent(productName)}&price=${pricePerUnit}&quantity=${quantity}`;
+}
+
+        
+       
+
+ function selfPickup(productId, pricePerUnit, productName) {
+    const quantity = document.getElementById(`quantity${productId}`).value;
+    const totalPrice = pricePerUnit * quantity;
+
+    // Pre-fill WhatsApp message
+    const message = `Hi, I'd like to place a self-pickup order for:\n\nProduct: ${productName}\nQuantity: ${quantity}\nTotal Price: ₹${totalPrice}\nGmail: \nPickup Date: `;
+    const whatsappURL = `https://wa.me/9089042003?text=${encodeURIComponent(message)}`;
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+}
+
+
+    fetch("/place-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ customerId, productName, quantity, totalPrice })
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(`Order placed! Your Order ID: ${data.orderId}`);
+            // Redirect to scanner.html
+            window.location.href = `scanner.html?orderId=${data.orderId}&amount=${totalPrice}`;
+        })
+        .catch(error => console.error("Error placing order:", error));
+
+
+    
+</script>
+
+    </script>
+</body>
+</html>
+<!-- Shop Introduction -->
+<div class="mt-5 text-center">
+    <h2>About Us</h2>
+    <p>
+        Odyuo Supply is dedicated to providing premium women's health and hygiene products 
+        that enhance your well-being. Our commitment to quality, affordability, and customer 
+        satisfaction sets us apart. Shop with confidence and discover products designed 
+        with your needs in mind. Experience the best with Odyuo Supply.
+    </p>
+</div>
+
+<!-- Payment Channels -->
+<div class="text-center my-4">
+    <h3>Payment Channels</h3>
+    <div>
+        <img src="images/paytm.jpeg" alt="Paytm" style="width: 60px; margin: 0 20px;">
+        <img src="images/upi.jpg" alt="UPI" style="width: 60px; margin: 0 40px;">
+        <img src="images/gpay.jpeg" alt="GPay" style="width: 60px; margin: 0 40px;">
+    </div>
+</div>
+
+<!-- Terms and Conditions -->
+<hr>
+<div class="text-center mt-4">
+    <a href="terms-and-conditions.html" class="text-primary">Terms and Conditions</a>
+</div>
+
+<!-- Footer -->
+<footer class="text-center mt-4">
+    <p style="color: red;">&copy; 2025 Odyuo Supply. All rights reserved.</p>
+</footer>
+</div>
+
+<form id="orderForm" onsubmit="submitOrder(event)">
+    <input type="hidden" id="product" value="Udaan Nari Mantra">
+    <input type="hidden" id="quantity" value="1">
+    <input type="hidden" id="paymentMethod" value="Offline">
+    <input type="hidden" id="name" value="Customer Name"> <!-- You can make this dynamic -->
+    <input type="hidden" id="email" value="customer-email@example.com">
+    <input type="hidden" id="phone" value="1234567890">
+    
+
+

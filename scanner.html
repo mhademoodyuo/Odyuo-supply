@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment QR Code</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+        .scanner {
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background-color: #fff;
+            width: 400px;
+        }
+        .scanner img {
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scanner">
+        <h3>Scan to Pay for <span id="productName"></span></h3>
+        <p>Total Price: ₹<span id="totalPrice"></span></p>
+        <img src="scanner.jpeg" alt="Payment QR Code">
+        <button id="confirmPaymentButton" class="btn btn-primary mt-3">Confirm Payment</button>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get("product") || "Product";
+        const pricePerUnit = parseFloat(urlParams.get("price")) || 0;
+        const quantity = parseInt(urlParams.get("quantity")) || 1;
+
+        // Calculate total price
+        const totalPrice = pricePerUnit * quantity;
+
+        // Populate the page with details
+        document.getElementById("productName").textContent = productName;
+        document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
+
+        // Add click event listener for Confirm Payment button
+        document.getElementById("confirmPaymentButton").addEventListener("click", () => {
+            const message = `Hi, this is the payment confirmation:\n\n` +
+                            `Product: ${productName}\n` +
+                            `Quantity: ${quantity}\n` +
+                            `Total Price: ₹${totalPrice}\n` +
+                            `Please share your Gmail address for the confirmation email.`;
+
+            const whatsappURL = `https://wa.me/9089042003?text=${encodeURIComponent(message)}`;
+            window.location.href = whatsappURL;
+        });
+    </script>
+</body>
+</html>

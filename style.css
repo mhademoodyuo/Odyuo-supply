@@ -1,0 +1,226 @@
+/* General Body Style */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #ffffff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Store name style */
+.custom-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    color: #4caf50;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Product icons */
+.product-icon {
+    font-size: 4rem;
+    color: #4caf50;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.product-icon:hover {
+    color: #1e88e5;
+    transform: scale(1.2);
+}
+
+/* Product card styles */
+.product {
+    background: linear-gradient(145deg, #ffffff, #f1f1f1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Image Styles */
+.product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Signup Form Styles */
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    border-radius: 15px;
+    background: linear-gradient(to right, #ffffff, #e3f2fd);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Roboto', sans-serif;
+}
+
+.signup-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.signup-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-container label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.signup-container input {
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.signup-container input:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.signup-container button {
+    padding: 12px;
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.signup-container button:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+}
+
+.signup-container p {
+    text-align: center;
+    margin-top: 15px;
+    color: #666;
+}
+
+.signup-container a {
+    color: #1e88e5;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-container a:hover {
+    text-decoration: underline;
+}
+
+/* Menu Popup Styles */
+#menuPopup {
+    position: fixed;
+    top: 60px; /* Adjust based on your header height */
+    right: 20px;
+    width: 250px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+#menuPopup .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#menuPopup .btn:hover {
+    background-color: #f1f1f1;
+}
+
+#menuPopup .btn-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+#menuPopup .btn-close:hover {
+    color: #000;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* Store Header */
+header {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Store Logo */
+.store-logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Store Name */
+.store-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #343a40;
+}
+
+/* Menu Button */
+#menuButton {
+    font-size: 1rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+}
+
+#menuButton:hover {
+    background-color: #495057;
+}
